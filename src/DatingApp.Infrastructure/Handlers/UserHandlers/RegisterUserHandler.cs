@@ -28,7 +28,7 @@
             var user = await this.userRepository.GetByEmail(request.Email);
             if (user != null)
             {
-                throw new DatingAppException(ErrorCode.AlreadyExists);
+                throw new DatingAppException(ErrorCode.AlreadyExists, "User with provided email already exists");
             }
 
             user = await this.userRepository.GetByUsername(request.Username);
@@ -43,6 +43,9 @@
             var birthDate = DateTime.UtcNow;
 
             user = new User(request.Email, request.Username, passwordHash, passwordSalt, request.Firstname, request.Lastname, birthDate, now);
+
+            await this.saveRepository.Add(user);
+            await this.saveRepository.Commit();
 
             return Unit.Value;
         }

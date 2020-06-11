@@ -16,14 +16,14 @@ using Xunit;
 
 namespace DatingApp.Infrastructure.Tests.Commands.UserCommands
 {
-    public class RegisterUserCommandTests
+    public class RegisterUserHandlerTests
     {
         private readonly Mock<IUserRepository> userRepositoryMock;
         private readonly Mock<IEncrypter> encrypterMock;
         private readonly Mock<ISaveRepository<User>> saveRepositoryMock;
         private RegisterUserHandler sut;
 
-        public RegisterUserCommandTests()
+        public RegisterUserHandlerTests()
         {
             this.userRepositoryMock = new Mock<IUserRepository>();
             this.encrypterMock = new Mock<IEncrypter>();

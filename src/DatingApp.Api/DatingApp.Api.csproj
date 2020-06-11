@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -36,15 +36,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Validators\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="..\..\.editorconfig" Link=".editorconfig" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DatingApp.Infrastructure\DatingApp.Infrastructure.csproj" />
+    <ProjectReference Include="..\DatingApp.Shared\DatingApp.Shared.csproj" />
   </ItemGroup>
 
 

@@ -29,6 +29,10 @@ namespace DatingApp.Core.Exceptions
 
         public static ErrorCode NotFound => new ErrorCode(nameof(NotFound), HttpStatusCode.NotFound);
 
+        public static ErrorCode UnverifiedUser => new ErrorCode(nameof(UnverifiedUser), HttpStatusCode.Unauthorized);
+
+        public static ErrorCode WrongPassword => new ErrorCode(nameof(WrongPassword), HttpStatusCode.BadRequest);
+
         public static ErrorCode Empty(string propertyName) => new ErrorCode($"{propertyName} is empty", HttpStatusCode.UnprocessableEntity);
     }
 }

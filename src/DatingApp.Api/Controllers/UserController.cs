@@ -1,22 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using MediatR;
-using Microsoft.AspNetCore.Mvc;
-
-namespace DatingApp.Api.Controllers
+﻿namespace DatingApp.Api.Controllers
 {
+    using System.Threading.Tasks;
+    using DatingApp.Infrastructure.Commands.UserCommands;
+    using MediatR;
+    using Microsoft.AspNetCore.Mvc;
+
     [Route("api/user")]
     public class UserController : AbstractController
     {
-        public UserController(IMediator mediator) 
+        public UserController(IMediator mediator)
             : base(mediator)
         {
         }
 
-        [HttpGet("register")]
-        public async Task<ActionResult> Get()
-            => Ok("xdd");
+        [HttpPost("register")]
+        public async Task<ActionResult> Get([FromBody] RegisterUserCommand command)
+            => this.Ok(await this.Handle(command));
+
+        [HttpPut("change-password")]
+        public async Task<ActionResult> ChangePassword([FromBody] ChangePasswordCommand command)
+            => this.Ok(await this.Handle(command));
+
     }
 }

@@ -9,24 +9,39 @@
     public class User : Entity
     {
         public string Email { get; protected set; }
+
         public string Username { get; protected set; }
+
         public string Firstname { get; protected set; }
+
         public string Lastname { get; protected set; }
+
         public string Hash { get; protected set; }
+
         public string Salt { get; protected set; }
 
         public DateTime BirthDate { get; protected set; }
+
         public AgeRange AgeRange { get; protected set; }
+
         public string Interests { get; protected set; }
+
         public string AboutMe { get; protected set; }
+
         public string Work { get; protected set; }
+
         public int MaxDistance { get; protected set; }
+
         public bool Privacy { get; protected set; }
+
         public string RememberPasswordToken { get; protected set; }
 
         public virtual List<Photo> Photos { get; set; }
+
         public virtual List<Like> Likes { get; set; }
+
         public virtual List<UnLike> UnLikes { get; set; }
+
         public virtual List<ExternalLogin> ExternalLogins { get; set; }
 
         public DateTime AddedAt { get; protected set; }
@@ -40,6 +55,11 @@
             this.SetLastname(lastname);
             this.SetBirthDate(birthDate);
             this.SetAddedAt(addedAt);
+        }
+
+        public void UpdatePassword(string hash, string salt)
+        {
+            SetPassword(hash, salt);
         }
 
         protected User()

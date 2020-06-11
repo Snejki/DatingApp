@@ -3,6 +3,7 @@
     using System;
     using System.Net;
     using System.Threading.Tasks;
+    using DatingApp.Core.Exceptions;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Logging;
     using Newtonsoft.Json;
@@ -42,12 +43,12 @@
                 errorCode = nameof(HttpStatusCode.Unauthorized);
                 statusCode = HttpStatusCode.Unauthorized;
             }
-            //else if (exception is BlogException blogException)
-            //{
-            //    statusCode = blogException.ErrorCode.StatusCode;
-            //    errorCode = blogException.ErrorCode.Message;
-            //    message = string.IsNullOrEmpty(blogException.Message) ? errorCode : blogException.Message;
-            //}
+            else if (exception is DatingAppException datingAppException)
+            {
+                statusCode = datingAppException.ErrorCode.StatusCode;
+                errorCode = datingAppException.ErrorCode.Message;
+                message = string.IsNullOrEmpty(datingAppException.Message) ? errorCode : datingAppException.Message;
+            }
 
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)statusCode;

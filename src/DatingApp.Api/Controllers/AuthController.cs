@@ -1,8 +1,10 @@
 ﻿namespace DatingApp.Api.Controllers
 {
-    using MediatR;
-    using Microsoft.AspNetCore.Mvc;
     using System.Threading.Tasks;
+    using DatingApp.Infrastructure.Queries.AuthQueries;
+    using MediatR;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
 
     [Route("api/auth")]
     public class AuthController : AbstractController
@@ -12,10 +14,9 @@
         {
         }
 
-        [HttpPost]
-        public async Task<ActionResult> Login()
-        {
-            return null;
-        }
+        [AllowAnonymous]
+        [HttpPost("login")]
+        public async Task<ActionResult> Login([FromBody] LoginUserQuery query)
+            => this.Ok(await this.Handle(query));
     }
 }

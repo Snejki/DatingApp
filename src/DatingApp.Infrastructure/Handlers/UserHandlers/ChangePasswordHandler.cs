@@ -40,7 +40,7 @@
             var newSalt = this.encrypter.GetSalt(request.NewPassword);
             var newHash = this.encrypter.GetHash(request.NewPassword, newSalt);
 
-            user.UpdatePassword(newHash, newSalt);
+            user.SetPassword(newHash, newSalt);
             await this.saveRepository.Update(user);
             await this.saveRepository.Commit();
 

@@ -7,8 +7,10 @@
     using DatingApp.Infrastructure.Commands;
     using DatingApp.Infrastructure.Queries;
     using MediatR;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
+    [Authorize]
     public abstract class AbstractController : ControllerBase
     {
         private readonly IMediator mediator;

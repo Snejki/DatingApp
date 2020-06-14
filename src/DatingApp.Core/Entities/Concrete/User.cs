@@ -57,16 +57,11 @@
             this.SetAddedAt(addedAt);
         }
 
-        public void UpdatePassword(string hash, string salt)
-        {
-            SetPassword(hash, salt);
-        }
-
         protected User()
         {
         }
 
-        void SetEmail(string email)
+        public void SetEmail(string email)
         {
             if (string.IsNullOrEmpty(email))
             {
@@ -76,7 +71,7 @@
             this.Email = email;
         }
 
-        void SetUsername(string username)
+        public void SetUsername(string username)
         {
             if (string.IsNullOrEmpty(username))
             {
@@ -86,7 +81,7 @@
             this.Username = username;
         }
 
-        void SetPassword(string hash, string salt)
+        public void SetPassword(string hash, string salt)
         {
             if (string.IsNullOrEmpty(hash) || string.IsNullOrEmpty(salt))
             {
@@ -97,7 +92,7 @@
             this.Salt = salt;
         }
 
-        void SetFristname(string firstname)
+        public void SetFristname(string firstname)
         {
             if (string.IsNullOrEmpty(firstname))
             {
@@ -107,7 +102,7 @@
             this.Firstname = firstname;
         }
 
-        void SetLastname(string lastname)
+        public void SetLastname(string lastname)
         {
             if (string.IsNullOrEmpty(lastname))
             {
@@ -117,14 +112,39 @@
             this.Lastname = lastname;
         }
 
-        void SetBirthDate(DateTime birthDate)
+        public void SetBirthDate(DateTime birthDate)
         {
             this.BirthDate = birthDate;
         }
 
-        void SetAddedAt(DateTime addedAt)
+        public void SetAddedAt(DateTime addedAt)
         {
             this.AddedAt = addedAt;
+        }
+
+        public void SetAgeRange(AgeRange ageRange)
+        {
+            this.AgeRange = ageRange;
+        }
+
+        public void SetInterests(string interests)
+        {
+            this.Interests = interests;
+        }
+
+        public void SetAboutMe(string aboutMe)
+        {
+            this.AboutMe = aboutMe;
+        }
+
+        public void SetWork(string work)
+        {
+            this.Work = work;
+        }
+
+        public void SetMaxDistance(int maxDistance)
+        {
+            this.MaxDistance = maxDistance;
         }
     }
 }
